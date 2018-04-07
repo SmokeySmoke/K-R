@@ -41,6 +41,8 @@ int main(void)
 			putchar('*');
 		putchar('\n');
 	}
+	printf("\n%d words over %d letters.\n", ovflow, MAXWLEN);
+
 	for (i = 0; i < MAXWLEN; i++)
 		printf("=========");
 
