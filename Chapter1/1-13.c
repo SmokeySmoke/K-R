@@ -46,9 +46,12 @@ int main(void)
 	for (i = 0; i < MAXWLEN; i++)
 		printf("=========");
 
+	biggest = ovflow;
 	for (i = 0; i < MAXWLEN; i++)	// vertical histogram
+	{
 		if (wrdlen[i] > biggest)
 			biggest = wrdlen[i];
+	}
 	putchar('\n');
 	for (i = biggest; i > 0; i--)
 	{
