@@ -8,7 +8,7 @@ int main(void)
 {
 	int len;			/* current line length */
 	char line[MAXLINE];		/* current input line */
-	char ch, prevch = 'c';
+	char ch;
 
 	len = 0;
 	while ((ch = getchar()) != EOF)
@@ -27,11 +27,8 @@ int main(void)
 		{
 			if (len < MAXLINE)
 				line[len] = ch;
-			if ((prevch != ' ' && prevch != '\t') ||
-				       	((prevch == ' ' || prevch == '\t') && (ch != ' ' && ch != '\t')))
-				len++;
+			len++;
 		}
-		prevch = ch;
 	}
 
 	return 0;
