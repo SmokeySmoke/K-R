@@ -3,9 +3,6 @@
 #define MAXLINE 1000	/* maximum input line size */
 #define BREAK 80	// breakpoint to print line
 
-void copy(char to[], char from[]);
-
-/* print longest input line */
 int main(void)
 {
 	int len;			/* current line length */
@@ -32,14 +29,4 @@ int main(void)
 	}
 
 	return 0;
-}
-
-/* copy: copy 'from' into 'to'; assume to is big enough */
-void copy(char to[], char from[]) 
-{
-	int i;
-
-	i = 0;
-	while ((to[i] = from[i]) != '\0')
-		++i;
 }
