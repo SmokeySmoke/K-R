@@ -58,7 +58,10 @@ int htoi(char s[])
 			else if (s[i] == 'F')
 				val = HEX_F;
 			else if (s[i] == 'X')
+			{
+				s[i] = 'x';
 				n = val = 0;
+			}
 			else
 			{
 				printf("Not a Hexadecimal number!\n");
