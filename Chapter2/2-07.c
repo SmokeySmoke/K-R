@@ -1,36 +1,31 @@
-/* Write a function setbits(x,p,n,y) that returns x with the n bits that begin at position
- * p set to the rightmost n bits of y, leaving the other bits unchanged.
+/* Write a function invert(x,p,n) that returns x with the n bits that
+ * begin at position p inverted (i.e., 1 changed to 0 and vice versa)
+ * leaving the others unchanged.
  */
+
 #include <stdio.h>
 #include <limits.h>	// for CHAR_BIT, # of bits per char
 char * itobs(int, char *);
 void show_bstr(const char *);
-int setbits(int x, int p, int n, int y);
+int invert(int x, int p, int n);
 
 char bin_str[CHAR_BIT * sizeof (int) + 1];
 
 int main(void)
 {
 	int number;
-	int x, y;
-	int p, n;
+	int x, p, n;
 
-	puts("Enter the target number, bit position, bit field, and comparison number.\n"
+	puts("Enter the target number to invert, bit position, and bit field.\n"
              "q to quit\n");
-	while (scanf("%d %d %d %d", &x, &p, &n, &y) == 4)
+	while (scanf("%d %d %d", &x, &p, &n) == 3)
 	{
-		number = setbits(x,p,n,y);
+		number = invert(x,p,n);
 
-		printf("\n%d with %d bits that begin at position %d set to\n"
-		       "the rightmost %d bits of %d is %d\n\n", x, n, p, n, y, number);
+		printf("\n%d with %d bits that begin at position %d inverted: %d\n", x, n, p, number);
 
 		itobs(x, bin_str);
 		printf("%5d: ", x);
-		show_bstr(bin_str);
-		putchar('\n');
-
-		itobs(y, bin_str);
-		printf("%5d: ", y);
 		show_bstr(bin_str);
 		putchar('\n');
 
@@ -46,15 +41,11 @@ int main(void)
 	return 0;
 }
 
-int setbits(int x, int p, int n, int y)
+int invert(int x, int p, int n)
 {
-	int mask = ~(~0 << n);
+	int mask = ~(~0 << n) << p+1-n;
 
-	y &= mask;
-	y <<= p+1-n;
-	mask <<= p+1-n;
-
-	return y | (x & ~mask);
+	return (x&~mask) | ~(x&mask) & mask;
 }
 
 char * itobs(int n, char * ps)
