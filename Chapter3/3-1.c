@@ -22,7 +22,7 @@ int main(void)
 		start = clock();
 		product = binsearch(x, ar, ARLEN);
 		end = clock();
-		runtime = end - start / CLOCKS_PER_SEC;
+		runtime = (double) (end - start) / CLOCKS_PER_SEC;
 		printf("\n%d %s in array ", x, product == -1 ? "NOT FOUND" : "FOUND");
 		if (product > -1)
 			printf("index %d!\n", product);
@@ -33,7 +33,7 @@ int main(void)
 		start = clock();
 		product = mybinsearch(x, ar, ARLEN);
 		end = clock();
-		runtime = end - start / CLOCKS_PER_SEC;
+		runtime = (double) (end - start) / CLOCKS_PER_SEC;
 		printf("%d %s in array ", x, product == -1 ? "NOT FOUND" : "FOUND");
 		if (product > -1)
 			printf("index %d!\n", product);
