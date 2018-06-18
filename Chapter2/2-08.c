@@ -1,12 +1,10 @@
 /* Write a function rightrot(x, n) that returns the value of integer x rotated to the right by n positions */
 #include <stdio.h>
 #include <limits.h>		// for CHAR_BIT, # of bits per char
-#define HIBIT 0x80000000	// high order bit (??) of unsigned int on my machine
+#define HIBIT 0x80000000	// high order bit of unsigned int on my machine
 #define LOBIT 0x01		// low order bit
 
 unsigned rightrot(unsigned x, unsigned n);
-_Bool hibitON(unsigned x);
-_Bool lobitON(unsigned x);
 char * itobs(unsigned, char *);
 void show_bstr(const char *);
 
@@ -62,22 +60,6 @@ unsigned rightrot(unsigned x, unsigned n)
 	}
 
 	return x;
-}
-
-_Bool hibitON(unsigned x)
-{
-	if (x & HIBIT != 0)
-		return 1;
-	else
-		return 0;
-}
-
-_Bool lobitON(unsigned x)
-{
-	if (x & LOBIT != 0)
-		return 1;
-	else
-		return 0;
 }
 
 char * itobs(unsigned n, char * ps)
