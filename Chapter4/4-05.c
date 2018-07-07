@@ -67,6 +67,13 @@ int main(void)
 				clear_stack();
 				disp_top();
 				break;
+			case 'm' : 
+				op2 = pop();
+				op1 = pop();
+				printf("sin(%.2lf) = %.2lf\n", op2, sin(op2));
+				printf("exp(%.2lf) = %.2lf\n", op2, exp(op2));
+				printf("pow(%.2lf, %.2lf) = %.2lf\n", op1, op2, pow(op1, op2));
+				break;
 			case '\n':
 				printf("\t%.8g\n", pop());
 				break;
